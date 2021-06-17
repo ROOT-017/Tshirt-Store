@@ -1,0 +1,7 @@
+x = int(input("Enter a number:"))
+y = int(input("Enter a number:"))
+print(f"Sum:{x+y}")
+print(f"Difference:{x-y}")
+print(f"Product:{x*y}")
+print(f"Quotien:{x/y}")
+print(f'Modulus:{x%y}')
