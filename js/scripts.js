@@ -49,8 +49,26 @@ var search_params = {
 
 $(function() {
 
-    $("#white").click(function() {
+    $("#style").change(function() {
+        var style = $("#style").val()
+    });
 
+    $("#white").click(function() {
+        /* console.log("Clicked") */
+        if (style == "printed") {
+            $("#photo-product").prop('src', products.white.printed.photo);
+        } else if (style == "plain") {
+            $("#photo-product").prop('src', products.white.plain.photo);
+        }
+    });
+
+    $("#colored").click(function() {
+        /* console.log("2Clicked") */
+        if (style == "printed") {
+            $("#photo-product").prop('src', products.colored.printed.photo);
+        } else if (style == "plain") {
+            $("#photo-product").prop('src', products.colored.plain.photo);
+        }
     })
 
 });
