@@ -48,27 +48,85 @@ var search_params = {
 // Solution:
 
 $(function() {
+    $("#quantity").val();
+    $("#style").val();
+    $("#color .color-option.selected").attr("id");
+    $("#quality .color-option.selected").attr("id")
 
-    $("#style").change(function() {
-        var style = $("#style").val()
-    });
+    function updated_search_params() {
+        search_params.quantity = $("#quantity").val()
+        search_params.color = $("#color .option-button.selected").attr("id")
+        search_params.quality = $("#quality .option-button.selected").attr("id")
+        search_params.style = $("#style").val()
+        console.log(search_params)
+    };
+    updated_search_params()
 
-    $("#white").click(function() {
-        /* console.log("Clicked") */
-        if (style == "printed") {
-            $("#photo-product").prop('src', products.white.printed.photo);
-        } else if (style == "plain") {
-            $("#photo-product").prop('src', products.white.plain.photo);
-        }
-    });
-
-    $("#colored").click(function() {
-        /* console.log("2Clicked") */
-        if (style == "printed") {
-            $("#photo-product").prop('src', products.colored.printed.photo);
-        } else if (style == "plain") {
-            $("#photo-product").prop('src', products.colored.plain.photo);
-        }
-    })
-
+    function Dispalay_Data() {
+        $("#result-style").html(search_params.style),
+            $("#result-quality").html(search_params.quality),
+            $("#result-color").html(search_params.color),
+            $("#result-quantity").html(search_params.quantity)
+    }
+    Dispalay_Data()
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+$("#colored").click(function() {
+        console.log("2Clicked") 
+$("#photo-product").prop('src', products.colored.printed.photo);
+
+$("#style").change(function() {
+var style = $("#style").val()
+if (style == "printed") {
+    $("#photo-product").prop('src', products.colored.printed.photo);
+} else if (style == "plain") {
+    $("#photo-product").prop('src', products.colored.plain.photo);
+}
+});
+
+})
+/* ================================================================================== */
+/* var quantity = $("#quantity").val()
+var qualityFibric = $("#q150").val()
+var color = $("#white").val()
+var t_style = products.colored.plain */
+/* $("#result-style") = t_style */
+
+/* $("#result-style").parent("span") = "gdfd" */
+
+
+/* 
+       $("#photo-product").prop('src', products.white.printed.photo);
+
+       $("#white").click(function() {
+           /* console.log("Clicked") 
+   $("#photo-product").prop('src', products.white.printed.photo);
+
+   $("#style").change(function() {
+       var style = $("#style").val()
+       if (style == "printed") {
+           $("#photo-product").prop('src', products.white.printed.photo);
+       } else if (style == "plain") {
+           $("#photo-product").prop('src', products.white.plain.photo);
+       }
+   });*/
