@@ -49,18 +49,20 @@ var search_params = {
 
 $(function() {
     function main() {
-        $("#quantity").val();
-        $("#style").val();
-        $("#color .color-option.selected").attr("id");
-        $("#quality .color-option.selected").attr("id")
-
+        /* 
+                $("#quantity").val();
+                $("#style").val();
+                $("#color .color-option.selected").attr("id");
+                $("#quality .color-option.selected").attr("id")
+         */
         function updated_search_params() {
             search_params.quantity = $("#quantity").val()
             search_params.color = $("#color .option-button.selected").attr("id")
             search_params.quality = $("#quality .option-button.selected").attr("id")
             search_params.style = $("#style").val()
+            Dispalay_Data()
         };
-        updated_search_params()
+        //updated_search_params()
 
         function Dispalay_Data() {
             var styleSelector = "#style option[value=" + search_params.style + "]"
@@ -70,10 +72,12 @@ $(function() {
             var colorid = "#" + search_params.color
             $("#result-color").html($(colorid).text())
             $("#result-quantity").html(search_params.quantity)
-            var photoURL = "img/" + products[search_params.color][search_params.style].photo
+            var photoURL = "img/" + products[search_params.color][search_params.style].photo;
             $("#photo-product").attr("src", photoURL)
+
+            $("#total-price").html(calculate_price().toFixed(2))
         }
-        Dispalay_Data()
+        // Dispalay_Data()
 
 
         function calculate_price() {
@@ -103,7 +107,32 @@ $(function() {
             }
             return total_price
         }
-        $("#total-price").html(calculate_price().toFixed(2))
+
+
+
+        updated_search_params()
+
+        /*    $("#quantity").change(function() {
+               search_params.quantity = parseInt($("#quantity").val());
+               Dispalay_Data();
+           });
+
+           $("#style").change(function() {
+               search_params.style = $("#style").val();
+               Dispalay_Data();
+           }); */
+
+
+        //Clicked buttons
+        $(".option-button").click(function() {
+            var ClickedElement = $(this).parent().attr("id");
+            var chiledSelector = "#" + ClickedElement + " .option-button"
+            $(chiledSelector).removeClass("selected")
+            $(this).addClass("selected")
+            var selectedChild = "#" + ClickedElement + " .option - button.selected";
+            search_params[ClickedElement] = $(selectedChild).attr("id");
+            Dispalay_Data()
+        });
 
     }
     main()
